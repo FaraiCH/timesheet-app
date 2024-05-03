@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignIdFor(Department::class);
-            $table->foreignIdFor(Organisation::class);
+            $table->foreignIdFor(Department::class)->nullable();
+            $table->foreignIdFor(Organisation::class)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
