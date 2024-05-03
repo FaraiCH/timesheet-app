@@ -24,4 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/timesheet', function (){
+    return Inertia::render('TimeSheet');
+})->name('timesheet');
+
 require __DIR__.'/auth.php';
