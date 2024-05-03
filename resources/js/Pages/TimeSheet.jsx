@@ -1,11 +1,23 @@
 import { Head } from '@inertiajs/react';
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 export default function TimeSheet() {
-    const tableData = [
-        { id: 1, name: 'John Doe', email: 'john@example.com' },
-        { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
-        { id: 3, name: 'Bob Johnson', email: 'bob@example.com' },
-    ];
+
+    const [userData, setUserData] = useState([]);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const response = await axios.get('/api/open/user');
+                setUserData(response.data);
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
     return (
         <>
             <Head title="Time Sheet" />
@@ -21,7 +33,7 @@ export default function TimeSheet() {
                         </tr>
                         </thead>
                         <tbody>
-                        {tableData.map((row) => (
+                        {userData.map((row) => (
                             <tr key={row.id}>
                                 <td className="border px-4 py-2">{row.id}</td>
                                 <td className="border px-4 py-2">{row.name}</td>
