@@ -1,0 +1,24 @@
+{
+	"name": "modules/timesheet",
+	"description": "",
+	"type": "library",
+	"version": "1.0",
+	"license": "proprietary",
+	"require": {},
+	"autoload": {
+		"psr-4": {
+			"Modules\\Timesheet\\": "src/",
+			"Modules\\Timesheet\\Tests\\": "tests/",
+			"Modules\\Timesheet\\Database\\Factories\\": "database/factories/",
+			"Modules\\Timesheet\\Database\\Seeders\\": "database/seeders/"
+		}
+	},
+	"minimum-stability": "stable",
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Modules\\Timesheet\\Providers\\TimesheetServiceProvider"
+			]
+		}
+	}
+}

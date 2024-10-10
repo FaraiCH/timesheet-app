@@ -32,8 +32,8 @@ export default function Authenticated({ header, children }) {
                                 </NavLink>
 
                                 <NavLink
-                                    href={route('timesheet.index')}
-                                    active={route().current('timesheet.index')}
+                                    href={route('timesheet.tracking.index')}
+                                    active={route().current('timesheet.tracking.index')}
                                 >
 
                                     Timesheet
