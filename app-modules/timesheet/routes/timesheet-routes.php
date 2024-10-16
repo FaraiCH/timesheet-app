@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use Modules\Timesheet\Http\Controllers\TimesheetController;
+use Modules\Timesheet\Http\Controllers\TrackController;
+
 Route::middleware('auth')->group(function () {
-    Route::get('/timesheet', [\Modules\Timesheet\Http\Controllers\TrackController::class, 'index'])->name('timesheet.tracking.index');
+    Route::get('/timesheet', [TrackController::class, 'index'])->name('timesheet.tracking.index');
 });
 
 // Route::get('/timesheets', [TimesheetController::class, 'index'])->name('timesheets.index');
