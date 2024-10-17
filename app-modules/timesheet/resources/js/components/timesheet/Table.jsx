@@ -1,8 +1,8 @@
 
 
 function Table(){
-    return <table>
-        <thead className={'table table-bordered'}>
+    return <table className={'table'}>
+        <thead>
             <tr>
                 <th>Day</th>
                 <th>Shift</th>
@@ -15,6 +15,12 @@ function Table(){
         </thead>
         <tbody>
             <tr>
+                <td>Day in Week</td>
+                <td>Day in Week</td>
+                <td>Day in Week</td>
+                <td>Day in Week</td>
+                <td>Day in Week</td>
+                <td>Day in Week</td>
                 <td>Day in Week</td>
             </tr>
         </tbody>

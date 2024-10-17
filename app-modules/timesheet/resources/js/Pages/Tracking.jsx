@@ -1,6 +1,8 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import Table from "../components/timesheet/Table.jsx";
+import '../../.././../assets/css/bootstrap.min.css';
+import '../../../../assets/js/bootstrap.min.js';
 export default function Tracking() {
     return (
         <AuthenticatedLayout
