@@ -1,13 +1,13 @@
 function TimePicker(props)
 {
     let timePicker = new ej.calendars.TimePicker({
-        placeholder: 'Select a time',
+        placeholder: props.placeholder,
         // sets the format property to display the time value in 24 hours format.
-        format: 'HH:mm:ss',
+        format: props.format,
     });
-    timePicker.appendTo('#timePicker');
+    timePicker.appendTo('#'+props.attachToId);
 
-    return <input id="timePicker" name="timePicker" type="text" />;
+    return <input id={props.attachToId} name={props.attachToId}  type="text" />;
 }
 
 export default TimePicker;
