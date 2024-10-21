@@ -1,4 +1,4 @@
-function TimePicker()
+function TimePicker(props)
 {
     let timePicker = new ej.calendars.TimePicker({
         placeholder: 'Select a time',

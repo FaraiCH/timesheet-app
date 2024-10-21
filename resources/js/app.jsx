@@ -1,12 +1,6 @@
 import '../css/app.css';
 import './bootstrap';
-// import './ej/ej2-base/dist/global/ej2-base.min.js';
-// import './ej/ej2-inputs/dist/global/ej2-inputs.min.js';
-// import './ej/ej2-buttons/dist/global/ej2-buttons.min.js';
-// import './ej/ej2-lists/dist/global/ej2-lists.min.js';
-// import './ej/ej2-popups/dist/global/ej2-popups.min.js';
-// import './ej/ej2-calendars/dist/global/ej2-calendars.min.js';
-//
+
 import '../../public/ej/ej2-base/styles/bootstrap.css';
 import '../../public/ej/ej2-buttons/styles/bootstrap.css';
 import '../../public/ej/ej2-calendars/styles/bootstrap.css';
