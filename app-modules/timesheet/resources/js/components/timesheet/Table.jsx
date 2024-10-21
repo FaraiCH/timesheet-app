@@ -1,4 +1,7 @@
 
+import Dropdown from "./Dropdown.jsx";
+import Input from "./Input.jsx";
+import TimePicker from "./TimePicker.jsx";
 
 function Table(){
     return <table className={'table'}>
@@ -16,12 +19,12 @@ function Table(){
         <tbody>
             <tr>
                 <td>Day in Week</td>
-                <td>Day in Week</td>
-                <td>Day in Week</td>
-                <td>Day in Week</td>
-                <td>Day in Week</td>
-                <td>Day in Week</td>
-                <td>Day in Week</td>
+                <td><Dropdown /></td>
+                <td><TimePicker /></td>
+                <td></td>
+                <td><Input /></td>
+                <td><Input /></td>
+                <td><Dropdown /></td>
             </tr>
         </tbody>
     </table>

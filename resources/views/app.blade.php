@@ -9,8 +9,10 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link href="ej/ej2/bootstrap.css" rel="stylesheet" type="text/css" />
 
-        <!-- Scripts -->
+        <!-- Essential JS 2 all script -->
+        <script src="ej/ej2/dist/ej2.min.js" type="text/javascript"></script>
         @routes
         @viteReactRefresh
         @vite(['resources/js/app.jsx'])
