@@ -7,10 +7,10 @@ function Table(){
     return <table className={'table'}>
         <thead>
             <tr>
-                <th>Day</th>
+                <th>Monday</th>
                 <th>Shift</th>
-                <th>Start</th>
-                <th>End</th>
+                <th>Start Time</th>
+                <th>End Time</th>
                 <th>Overtime</th>
                 <th>Double</th>
                 <th>Comment</th>
