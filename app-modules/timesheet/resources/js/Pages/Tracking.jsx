@@ -3,6 +3,9 @@ import { Head } from '@inertiajs/react';
 import Table from "../components/timesheet/Table.jsx";
 import '../../.././../assets/css/bootstrap.min.css';
 import '../../../../assets/js/bootstrap.bundle.min.js';
+import '../../../../../public/ej/ej2-base/styles/bootstrap.css';
+import '../../../../../public/ej/ej2-buttons/styles/bootstrap.css';
+import '../../../../../public/ej/ej2-calendars/styles/bootstrap.css';
 export default function Tracking() {
     return (
         <AuthenticatedLayout
