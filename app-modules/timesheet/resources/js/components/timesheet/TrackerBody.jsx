@@ -1,7 +1,6 @@
 import Dropdown from "./Dropdown.jsx";
 import TimePicker from "./TimePicker.jsx";
 import Input from "./Input.jsx";
-
 function TrackerBody()
 {
     return <tbody>
