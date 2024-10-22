@@ -5,6 +5,12 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 
+function refreshPage() {
+    setTimeout(()=>{
+        window.location.reload(false);
+    }, 200);
+    console.log('page to reload')
+}
 export default function Authenticated({ header, children }) {
     const user = usePage().props.auth.user;
 
@@ -34,6 +40,7 @@ export default function Authenticated({ header, children }) {
                                 <NavLink
                                     href={route('timesheet.tracking.index')}
                                     active={route().current('timesheet.tracking.index')}
+                                    onClick={refreshPage}
                                 >
 
                                     Timesheet
