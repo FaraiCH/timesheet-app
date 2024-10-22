@@ -17,11 +17,11 @@ function SideMenu()
 
         <div className="mb-3">
             <label htmlFor="input3" className="form-label">Days to Capture</label>
-            <Input />
+            <Input type="number" />
         </div>
         <div className="mb-3">
             <label htmlFor="input3" className="form-label">Daily Work Hours</label>
-            <Input />
+            <Input type="number" />
         </div>
 
         <button type="submit" className="btn btn-primary">Submit</button>

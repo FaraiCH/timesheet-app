@@ -3,7 +3,7 @@ function Table(){
     return <table className={'table'}>
         <thead>
             <tr>
-                <th>Day in the Week</th>
+                <th>Day</th>
                 <th>Shift</th>
                 <th>Start Time</th>
                 <th>End Time</th>
