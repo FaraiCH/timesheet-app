@@ -1,6 +1,3 @@
-import Dropdown from "./Dropdown.jsx";
-import Input from "./Input.jsx";
-import TimePicker from "./TimePicker.jsx";
 import TrackerBody from "./TrackerBody.jsx";
 function Table(){
     return <table className={'table'}>
