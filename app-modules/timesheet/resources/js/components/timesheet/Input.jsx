@@ -1,7 +1,7 @@
-function Input()
+function Input(props)
 {
-    return <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="Enter email" />
+    return <input type={props.type} className="form-control" id={props.attachToId}
+                  placeholder={props.placeholder} />
 }
 
 export default Input;

@@ -6,6 +6,7 @@ import '../../../../assets/js/bootstrap.bundle.min.js';
 import '../../../../../public/ej/ej2-base/styles/bootstrap.css';
 import '../../../../../public/ej/ej2-buttons/styles/bootstrap.css';
 import '../../../../../public/ej/ej2-calendars/styles/bootstrap.css';
+import SideMenu from "../components/timesheet/SideMenu.jsx";
 export default function Tracking() {
     return (
         <AuthenticatedLayout
@@ -17,15 +18,23 @@ export default function Tracking() {
         >
             <Head title="Timesheet Tracking" />
 
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="over\flow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                           <Table />
+            <div className="flex min-h-screen">
+                <div className="w-1/4 bg-white p-6">
+                    <h2 className="text-xl font-semibold mb-4">Setup Timesheet</h2>
+                    <SideMenu />
+                </div>
+
+                <div className="py-12 w-3/4">
+                    <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                        <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                            <div className="p-6 text-gray-900">
+                                <Table/>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </AuthenticatedLayout>
     );
 }

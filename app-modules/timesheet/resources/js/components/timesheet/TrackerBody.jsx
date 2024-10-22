@@ -7,12 +7,12 @@ function TrackerBody()
     return <tbody>
         <tr>
             <td>Monday</td>
-            <td><Dropdown /></td>
-            <td><TimePicker placeholder="Select Start Time" format="HH:mm" attachToId="startTimePicker"/></td>
-            <td><TimePicker placeholder="Select End Time" format="HH:mm" attachToId="endTimePicker"/></td>
-            <td><Input /></td>
-            <td><Input /></td>
-            <td><Dropdown /></td>
+            <td><Dropdown attachToId="" mapData="" /></td>
+            <td><TimePicker placeholder="Select Start Time" format="HH:mm" attachToId="startTimePicker" value=""/></td>
+            <td><TimePicker placeholder="Select End Time" format="HH:mm" attachToId="endTimePicker" value=""/></td>
+            <td><Input type="text" placeholder="Overtime" name="" value="" attachToId=""/></td>
+            <td><Input type="text" placeholder="Double Time" name="" value="" attachToId=""/></td>
+            <td><Dropdown attachToId="" mapData="" /></td>
         </tr>
     </tbody>
 }
