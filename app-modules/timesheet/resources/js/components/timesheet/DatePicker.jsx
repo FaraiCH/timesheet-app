@@ -1,6 +1,6 @@
 function DatePicker(props)
 {
-    var startPicker = new ej.calendars.DatePicker({
+    let startPicker = new ej.calendars.DatePicker({
         placeholder: props.placeholder,
         // sets the format.
         format: props.format,
