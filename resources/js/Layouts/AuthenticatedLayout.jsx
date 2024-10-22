@@ -8,7 +8,7 @@ import { useState } from 'react';
 function refreshPage() {
     setTimeout(()=>{
         window.location.reload(false);
-    }, 200);
+    }, 320);
     console.log('page to reload')
 }
 export default function Authenticated({ header, children }) {
