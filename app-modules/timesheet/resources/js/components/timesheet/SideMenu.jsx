@@ -11,7 +11,6 @@ function SideMenu()
         event.preventDefault();
         const formData = new FormData(event.target);
         const numberOfRows = formData.get('numberOfRows');
-        console.log(formData.get('numberOfRows'));
         dispatch(setNumberOfRows(Number(numberOfRows)));
     };
     return <form onSubmit={handleSubmit}>
