@@ -17,8 +17,9 @@ const rowSlice = createSlice({
     initialState,
     reducers: {
         setNumberOfRows(state, action) {
-            state.numberOfRows = action.payload;
-            state.rows = Array.from({ length: action.payload }, (_, i) => ({
+            state.dateReady = action.payload.date;
+            state.numberOfRows = action.payload.noRows;
+            state.rows = Array.from({ length: action.payload.noRows }, (_, i) => ({
                 id: i + 1,
                 startTime: '',
                 endTime: '',

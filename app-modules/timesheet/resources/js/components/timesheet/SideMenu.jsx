@@ -11,7 +11,8 @@ function SideMenu()
         event.preventDefault();
         const formData = new FormData(event.target);
         const numberOfRows = formData.get('numberOfRows');
-        dispatch(setNumberOfRows(Number(numberOfRows)));
+        const dateCaptured = formData.get('date');
+        dispatch(setNumberOfRows({noRows: Number(numberOfRows), date: dateCaptured}));
     };
     return <form onSubmit={handleSubmit}>
         <div className="mb-3">

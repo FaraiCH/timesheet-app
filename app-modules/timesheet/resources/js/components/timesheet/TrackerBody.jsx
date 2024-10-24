@@ -7,8 +7,9 @@ import { setTime } from '../../Slice/rowSlice.js';
 function TrackerBody() {
     const dispatch = useDispatch();
     const rows = useSelector(state => state.rows.rows);  // Get rows from Redux
-
+    const dateReady = useSelector(state => state.rows.dateReady);
     const handleStartTimeChange = (id, time, type) => {
+        console.log(dateReady);
         dispatch(setTime({ id, time, type }));  // Dispatch Redux action for this row
     };
 
