@@ -2,7 +2,7 @@ import Dropdown from "./Dropdown.jsx";
 import TimePicker from "./TimePicker.jsx";
 import Input from "./Input.jsx";
 import { useDispatch, useSelector } from 'react-redux';
-import { setTime } from '../../Store/Store';
+import { setTime } from '../../Slice/rowSlice.js';
 
 function TrackerBody() {
     const dispatch = useDispatch();
@@ -10,7 +10,6 @@ function TrackerBody() {
 
     const handleStartTimeChange = (id, time, type) => {
         dispatch(setTime({ id, time, type }));  // Dispatch Redux action for this row
-        console.log(rows);
     };
 
     return (

@@ -26,8 +26,22 @@ const rowSlice = createSlice({
                 doubleTime: '',
             }));
         },
+        setTime: (state, action) => {
+            const {id, time, type } = action.payload;
+            const row = state.rows.find(row => row.id === id);
+
+            if(row)
+            {
+                if (type === 'start') {
+                    row.startTime = time;
+                } else if (type === 'end') {
+                    row.endTime = time;
+                }
+                row.overtime = 22;
+            }
+        },
     },
 });
 
-export const { setNumberOfRows } = rowSlice.actions;
+export const { setNumberOfRows, setTime } = rowSlice.actions;
 export default rowSlice.reducer;
