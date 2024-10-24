@@ -40,7 +40,6 @@ export default function Authenticated({ header, children }) {
                                 <NavLink
                                     href={route('timesheet.tracking.index')}
                                     active={route().current('timesheet.tracking.index')}
-                                    onClick={refreshPage}
                                 >
 
                                     Timesheet

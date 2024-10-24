@@ -1,7 +1,7 @@
 function Input(props)
 {
     return <input type={props.type} className="form-control" id={props.attachToId}
-                 name={props.attachToId} placeholder={props.placeholder} disabled={props.disabled} />
+                  onChange={props.onChange} name={props.attachToId} placeholder={props.placeholder} value={props.value} readOnly={props.disabled} />
 }
 
 export default Input;
