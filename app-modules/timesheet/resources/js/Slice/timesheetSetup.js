@@ -12,7 +12,7 @@ const initialState = {
     })),
 };
 
-const rowSlice = createSlice({
+const timesheetSetup = createSlice({
     name: 'rows',
     initialState,
     reducers: {
@@ -44,5 +44,5 @@ const rowSlice = createSlice({
     },
 });
 
-export const { setNumberOfRows, setTime } = rowSlice.actions;
-export default rowSlice.reducer;
+export const { setNumberOfRows, setTime } = timesheetSetup.actions;
+export default timesheetSetup.reducer;

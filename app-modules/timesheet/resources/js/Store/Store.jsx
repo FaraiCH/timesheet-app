@@ -1,19 +1,5 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-import rowReducer from '../Slice/rowSlice'; // Import the new slice
-
-let rowObject  = []
-
-for(let i = 0; i < 5; i++)
-{
-    rowObject.push({ id: i+1, startTime: '', endTime: '', overtime: '', doubleTime: '' });
-}
-
-const inputSlice = createSlice({
-    name: 'tracker',
-    initialState: {
-        rows: rowObject
-    },
-})
+import { configureStore } from "@reduxjs/toolkit";
+import rowReducer from '../Slice/timesheetSetup.js'; // Import the new slice
 
 const Store = configureStore({
     reducer: {

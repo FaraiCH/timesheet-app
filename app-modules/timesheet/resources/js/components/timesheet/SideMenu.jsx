@@ -1,6 +1,6 @@
 import Input from "./Input.jsx";
 import DatePicker from "./DatePicker.jsx";
-import {setNumberOfRows} from "../../Slice/rowSlice.js";
+import {setNumberOfRows} from "../../Slice/timesheetSetup.js";
 import {useDispatch} from "react-redux";
 
 function SideMenu()

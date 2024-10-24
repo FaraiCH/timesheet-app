@@ -2,7 +2,7 @@ import Dropdown from "./Dropdown.jsx";
 import TimePicker from "./TimePicker.jsx";
 import Input from "./Input.jsx";
 import { useDispatch, useSelector } from 'react-redux';
-import { setTime } from '../../Slice/rowSlice.js';
+import { setTime } from '../../Slice/timesheetSetup.js';
 
 function TrackerBody() {
     const dispatch = useDispatch();
