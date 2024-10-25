@@ -19,7 +19,7 @@ function TrackerBody() {
         <tbody>
         {rows.map((row) => (
             <tr key={row.id}>
-                <td>Monday</td>
+                <td>{row.dateCaptured}</td>
                 <td><Dropdown attachToId="" mapData="" /></td>
                 <td>
                     <TimePicker
