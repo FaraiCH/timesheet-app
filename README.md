@@ -1,66 +1,151 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Timesheet App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A robust and user-friendly timesheet tracking application built using **React** with **Inertia.js** and **Laravel**. This app is containerized with Docker for efficient development and deployment, featuring two containers: one for the **database** and another running on **Ubuntu Linux**.
 
-## About Laravel
+## Table of Contents
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Setup and Installation](#setup-and-installation)
+- [Docker Configuration](#docker-configuration)
+- [Usage](#usage)
+- [Folder Structure](#folder-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Time Tracking**: Log work hours with precise start and end times, calculate overtime, and track double time.
+- **Dynamic Row Management**: Add, edit, and delete time-tracking entries on the fly.
+- **Data Persistence**: Store timesheet data with a backend database.
+- **Dockerized Environment**: Simplified setup and deployment using Docker with separate containers for the app and the database.
+- **Interactive Frontend**: A sleek user interface built with React, powered by Inertia.js for seamless client-server interaction.
 
-## Learning Laravel
+## Technology Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Frontend**: React, Inertia.js, Redux Toolkit
+- **Backend**: Laravel
+- **Database**: MySQL
+- **Containerization**: Docker
+- **Environment**: Ubuntu Linux
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Setup and Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/yourusername/timesheet-app.git
+   cd timesheet-app
+   ```
 
-## Laravel Sponsors
+2. **Environment Configuration**  
+   Copy the `.env.example` file to `.env` and configure your environment settings.
+   ```bash
+   cp .env.example .env
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3. **Install Dependencies**
+    - Install the backend dependencies:
+      ```bash
+      composer install
+      ```
+    - Install the frontend dependencies:
+      ```bash
+      npm install
+      ```
 
-### Premium Partners
+4. **Set Up Docker Containers**
+    - Ensure Docker is installed and running.
+    - Build and start the containers:
+      ```bash
+      docker-compose up -d
+      ```
+    - The application will be available at `http://localhost` by default, and the database at `localhost:3306`.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+5. **Database Migration**
+    - Run the migrations to set up the database tables:
+      ```bash
+      php artisan migrate
+      ```
+
+## Docker Configuration
+
+The application is set up with a `docker-compose.yml` file that defines two containers:
+
+- **App Container**: Runs on Ubuntu Linux and houses the Laravel application.
+- **Database Container**: A MySQL container used to persist application data.
+
+### Docker Setup Summary
+
+- **Database**:
+-     image: mysql:5.7
+      container_name: db-server
+      environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: timesheet_dev
+          MYSQL_USER: username
+          MYSQL_PASSWORD: 'password'
+      volumes:
+          - db_data:/var/lib/mysql
+          - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+      ports:
+          - "3307:3306
+
+- **App**:
+-     web:
+      build: .
+      container_name: v3-server
+      ports:
+      - "8002:80"
+      volumes:
+      - .:/var/www/html
+      depends_on:
+      - db
+      environment:
+      - DB_HOST=db
+      - DB_DATABASE=timesheet_dev
+      - DB_USERNAME=username
+      - DB_PASSWORD=passsowrd
+-     volumes:
+        db_data:
+## Usage
+
+1. **Accessing the App**: Go to `http://localhost:8000` to view the application.
+2. **Using Docker**: If you using docker to run the app, then you can access it on `http://localhost:8002` 
+3. **Adding Time Entries**: Use the timesheet UI to add new entries by specifying start and end times.
+3. **Editing Entries**: Edit existing entries, and changes will reflect in real-time.
+4. **Calculate Overtime**: Automatically calculates overtime and double time based on your custom rules.
+
+## Folder Structure
+
+```plaintext
+.
+├── app               # Laravel application files
+├── app-module        # Modules folder for modular react components
+├── bootstrap         # Boostrap config
+├── config            # App config files
+├── init-db.sql       # Folder for all extracted database
+├── public            # Public resources
+├── resources         # React components and frontend assets
+├── routes            # React main routes
+├── storage           # Storage folder
+├── docker-compose.yml
+├── Dockerfile
+├── .env.example      # Example environment configuration
+├── package.json      # Node.js dependencies
+└── README.md         # Project documentation
+```
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Contributions are welcome! Please follow these steps:
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Fork the repository.
+2. Create a new branch with your feature or bugfix.
+3. Commit your changes with descriptive messages.
+4. Push to the branch and open a pull request.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
