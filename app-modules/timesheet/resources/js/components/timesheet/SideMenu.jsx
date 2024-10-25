@@ -5,13 +5,18 @@ import {useDispatch} from "react-redux";
 
 function SideMenu()
 {
+    // We are going to be dispatching here because we want the data to be used
     const dispatch = useDispatch();
 
     const handleSubmit = (event) => {
+        // preventDefault is to prevent the submit button from reloading the entire page
         event.preventDefault();
+        // We get the form data when the submit has been clicked
         const formData = new FormData(event.target);
         const numberOfRows = formData.get('numberOfRows');
         const dateCaptured = formData.get('date');
+
+        // Notice I am passing an object to the setNumberOfRows reducer. Remember, this reducer holds our state and action payload
         dispatch(setNumberOfRows({noRows: Number(numberOfRows), date: dateCaptured}));
     };
     return <form onSubmit={handleSubmit}>

@@ -5,11 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setTime } from '../../Slice/timesheetSetup.js';
 
 function TrackerBody() {
+    // We are going to be "dispatching" data in order to update/override the initial state concerning the time sheet
     const dispatch = useDispatch();
-    const rows = useSelector(state => state.rows.rows);  // Get rows from Redux
+    // We call on our configured rows from Redux. look at it like this: state => name="rows" => rows in the slice object
+    const rows = useSelector(state => state.rows.rows);
     const dateReady = useSelector(state => state.rows.dateReady);
+    // This will handle our updates to the times and calculation for the row
     const handleStartTimeChange = (id, time, type) => {
-        console.log(dateReady);
         dispatch(setTime({ id, time, type }));  // Dispatch Redux action for this row
     };
 
@@ -26,7 +28,7 @@ function TrackerBody() {
                         format="HH:mm"
                         attachToId={`startTimePicker-${row.id}`}
                         value={row.startTime}
-                        changeMethod={(e) => handleStartTimeChange(row.id, e.value, 'start')}  // Optionally, track end time
+                        changeMethod={(e) => handleStartTimeChange(row.id, e.value, 'start')}  // track start time
                     />
                 </td>
                 <td>
@@ -35,7 +37,7 @@ function TrackerBody() {
                         format="HH:mm"
                         attachToId={`endTimePicker-${row.id}`}
                         value={row.endTime}
-                        changeMethod={(e) => handleStartTimeChange(row.id, e.value, 'end')}  // Optionally, track end time
+                        changeMethod={(e) => handleStartTimeChange(row.id, e.value, 'end')}  // track end time
                     />
                 </td>
                 <td>
@@ -43,7 +45,7 @@ function TrackerBody() {
                         type="number"
                         placeholder="Overtime"
                         name=""
-                        value={row.overtime}
+                        value={row.overtime} // This will be updated according to the action dispatched by startTime and endTime
                         attachToId={`overtime-${row.id}`}
                     />
                 </td>
