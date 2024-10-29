@@ -2,6 +2,7 @@ import Input from "./Input.jsx";
 import DatePicker from "./DatePicker.jsx";
 import {setNumberOfRows} from "../../Slice/timesheetSetup.js";
 import {useDispatch} from "react-redux";
+import HourRange from "./HourRange.jsx";
 
 function SideMenu()
 {
@@ -15,10 +16,12 @@ function SideMenu()
         const formData = new FormData(event.target);
         const numberOfRows = formData.get('numberOfRows');
         const dateCaptured = formData.get('date');
-
+        const hourRange = formData.get('slider');
+        console.log(hourRange);
         // Notice I am passing an object to the setNumberOfRows reducer. Remember, this reducer holds our state and action payload
         dispatch(setNumberOfRows({noRows: Number(numberOfRows), date: dateCaptured}));
     };
+
     return <form onSubmit={handleSubmit}>
         <div className="mb-3">
             <label htmlFor="input1" className="form-label">Team Member</label>
@@ -36,7 +39,7 @@ function SideMenu()
         </div>
         <div className="mb-3">
             <label htmlFor="input3" className="form-label">Daily Work Hours</label>
-            <Input type="number" />
+            <HourRange attachToId="slider" startValue="1" endValue="12" />
         </div>
 
         <button type="submit" className="btn btn-primary">Submit</button>

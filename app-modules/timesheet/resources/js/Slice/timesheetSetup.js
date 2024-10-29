@@ -12,6 +12,7 @@ const initialState = {
         overtime: '',
         doubleTime: '',
         dateCaptured: 'None',
+        user_id: '',
     })),
 };
 
@@ -39,6 +40,8 @@ const timesheetSetup = createSlice({
                 overtime: '',
                 doubleTime: '',
                 dateCaptured: action.payload.date,
+                user_id: '',
+
             }));
         },
         // This concerns the actual Time Sheet
