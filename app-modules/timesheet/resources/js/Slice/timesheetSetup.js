@@ -15,7 +15,7 @@ const initialState = {
         doubleTime: 0,
         dateCaptured: dateSpread(getStartOfWeek(new Date()), i, ''), // Keep note by default we are loading Monday to Friday in the current week
         dateFormat: dateSpread(getStartOfWeek(new Date()), i, 'dateFormat'),
-        hourRange: 0,
+        hourRange: 8,
         user_id: '',
     })),
 };
@@ -63,7 +63,7 @@ const timesheetSetup = createSlice({
                 } else if (type === 'end') {
                     row.endTime = time;
                 }
-                row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime);
+                row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange);
             }
         },
     },
