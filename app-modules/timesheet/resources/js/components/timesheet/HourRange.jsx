@@ -14,9 +14,7 @@ function HourRange(props)
                 // Maximum value
                 max: props.endValue,
                 // Slider current value
-                value: [1, 12],
-                //Set Type
-                type: 'Range'
+                value: 12,
             });
 
             timeRangePickerRef.current.appendTo('#' + props.attachToId);
