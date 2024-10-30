@@ -1,6 +1,7 @@
 // Timesheet Initial Setup
 import { createSlice } from '@reduxjs/toolkit';
 import dateSpread from "./plugins/dateSpread.js";
+import getStartOfWeek from "./plugins/startOfWeek.js";
 // Create the initial state for the slice of the time sheet
 // This will set the number of rows on the time sheet as well
 const initialState = {
@@ -9,10 +10,10 @@ const initialState = {
         id: i + 1,
         startTime: '',
         endTime: '',
-        overtime: '',
-        doubleTime: '',
-        dateCaptured: dateSpread(new Date().getDate(), i-1, ''),
-        dayFormat: dateSpread(new Date().getDate(), i-1, 'dateFormat'),
+        overtime: 0,
+        doubleTime: 0,
+        dateCaptured: dateSpread(getStartOfWeek(new Date().getDate()), i, ''), // Keep note by default we are loading Monday to Friday in the current week
+        dayFormat: dateSpread(getStartOfWeek(new Date().getDate()), i, 'dateFormat'),
         hourRange: 0,
         user_id: '',
     })),

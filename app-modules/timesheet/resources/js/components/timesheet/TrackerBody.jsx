@@ -3,6 +3,7 @@ import TimePicker from "./TimePicker.jsx";
 import Input from "./Input.jsx";
 import { useDispatch, useSelector } from 'react-redux';
 import { setTime } from '../../Slice/timesheetSetup.js';
+import { shift, comment } from "./dropdownContent/content.js";
 
 function TrackerBody() {
     // We are going to be "dispatching" data in order to update/override the initial state concerning the time sheet
@@ -20,7 +21,7 @@ function TrackerBody() {
         {rows.map((row) => (
             <tr key={row.id}>
                 <td>{row.dateCaptured}</td>
-                <td><Dropdown attachToId="" mapData="" /></td>
+                <td><Dropdown attachToId="" mapData={shift} /></td>
                 <td>
                     <TimePicker
                         key={`startTimePicker-${row.id}`}
@@ -47,6 +48,7 @@ function TrackerBody() {
                         name=""
                         value={row.overtime} // This will be updated according to the action dispatched by startTime and endTime
                         attachToId={`overtime-${row.id}`}
+                        disabled={true}
                     />
                 </td>
                 <td>
@@ -59,7 +61,7 @@ function TrackerBody() {
                         disabled={true}
                     />
                 </td>
-                <td><Dropdown attachToId="" mapData="" /></td>
+                <td><Dropdown attachToId="" mapData={comment} /></td>
             </tr>
         ))}
         </tbody>
