@@ -11,9 +11,9 @@ const initialState = {
         endTime: '',
         overtime: '',
         doubleTime: '',
-        dateCaptured: 'None',
-        dayFormat: '',
-        hourRange: '',
+        dateCaptured: dateSpread(new Date().getDate(), i-1, ''),
+        dayFormat: dateSpread(new Date().getDate(), i-1, 'dateFormat'),
+        hourRange: 0,
         user_id: '',
     })),
 };
@@ -35,6 +35,7 @@ const timesheetSetup = createSlice({
             state.dateReady = action.payload.date; // Using the action payload to get the date from the Side Menu
             state.numberOfRows = action.payload.noRows; // Using the action payload to get the days to be captured from Side Menu
             // Bellow we are looping through action.payload.noRows that came from the side Menu
+            // This will be mapped to the timesheet controls using the variable names
             state.rows = Array.from({ length: action.payload.noRows }, (_, i) => ({
                 id: i + 1,
                 startTime: '',
