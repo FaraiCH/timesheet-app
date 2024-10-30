@@ -15,7 +15,7 @@ const initialState = {
         doubleTime: 0,
         dateCaptured: dateSpread(getStartOfWeek(new Date()), i, ''), // Keep note by default we are loading Monday to Friday in the current week
         dateFormat: dateSpread(getStartOfWeek(new Date()), i, 'dateFormat'),
-        hourRange: 8,
+        hourRange: 12,
         user_id: '',
     })),
 };
