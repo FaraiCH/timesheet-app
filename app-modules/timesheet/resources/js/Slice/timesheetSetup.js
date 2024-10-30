@@ -1,6 +1,6 @@
 // Timesheet Initial Setup
 import { createSlice } from '@reduxjs/toolkit';
-
+import dateSpread from "./plugins/dateSpread.js";
 // Create the initial state for the slice of the time sheet
 // This will set the number of rows on the time sheet as well
 const initialState = {
@@ -39,7 +39,7 @@ const timesheetSetup = createSlice({
                 endTime: '',
                 overtime: '',
                 doubleTime: '',
-                dateCaptured: action.payload.date,
+                dateCaptured: dateSpread(action.payload.date, i - 1), // Here we are using the date spread to get the days according to 'Days to Capture'
                 user_id: '',
 
             }));
