@@ -12,6 +12,8 @@ const initialState = {
         overtime: '',
         doubleTime: '',
         dateCaptured: 'None',
+        dayFormat: '',
+        hourRange: '',
         user_id: '',
     })),
 };
@@ -27,7 +29,7 @@ const timesheetSetup = createSlice({
     initialState,
     reducers: {
         // This concerns the Side Menu
-        setNumberOfRows(state, action) {
+        setSideMenu(state, action) {
             // Remember, state here can have any name. We just gave attached names like dateReady, numberOfRows and rows.
             // These are declared here and used when we select states on other components
             state.dateReady = action.payload.date; // Using the action payload to get the date from the Side Menu
@@ -39,7 +41,9 @@ const timesheetSetup = createSlice({
                 endTime: '',
                 overtime: '',
                 doubleTime: '',
-                dateCaptured: dateSpread(action.payload.date, i - 1), // Here we are using the date spread to get the days according to 'Days to Capture'
+                dateCaptured: dateSpread(action.payload.date, i, ''), // Here we are using the date spread to get the days according to 'Days to Capture'
+                dateFormat: dateSpread(action.payload.date, i, 'dateFormat'),
+                hourRange: action.payload.hourRange,
                 user_id: '',
 
             }));
@@ -64,5 +68,5 @@ const timesheetSetup = createSlice({
 
 // Here we create an action that will be able to be used on both the side Menu and TimeSheet in order to dispatch a change in state
 // to the target component
-export const { setNumberOfRows, setTime } = timesheetSetup.actions;
+export const { setSideMenu, setTime } = timesheetSetup.actions;
 export default timesheetSetup.reducer;
