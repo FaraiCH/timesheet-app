@@ -134,7 +134,9 @@ The application is set up with a `docker-compose.yml` file that defines two cont
 ├── package.json      # Node.js dependencies
 └── README.md         # Project documentation
 ```
+## Changelog
 
+For a detailed list of changes, please see the [Changelog](./CHANGELOG.md).
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
