@@ -66,14 +66,20 @@ const timesheetSetup = createSlice({
                 } else if (type === 'end') {
                     row.endTime = time;
                 }
+                console.log(row.comment);
                 row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange);
                 row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment);
             }
         },
+        setComment: (state, action) => {
+            const { id, comment } = action.payload;
+            const row = state.rows.find(row => row.id === id);
+            if (row) row.comment = comment;
+        }
     },
 });
 
 // Here we create an action that will be able to be used on both the side Menu and TimeSheet in order to dispatch a change in state
 // to the target component
-export const { setSideMenu, setTime } = timesheetSetup.actions;
+export const { setSideMenu, setTime, setComment } = timesheetSetup.actions;
 export default timesheetSetup.reducer;

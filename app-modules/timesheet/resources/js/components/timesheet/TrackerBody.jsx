@@ -2,7 +2,7 @@ import Dropdown from "./Dropdown.jsx";
 import TimePicker from "./TimePicker.jsx";
 import Input from "./Input.jsx";
 import { useDispatch, useSelector } from 'react-redux';
-import { setTime } from '../../Slice/timesheetSetup.js';
+import { setTime, setComment } from '../../Slice/timesheetSetup.js';
 import { shift, comment } from "./dropdownContent/content.js";
 
 function TrackerBody() {
@@ -14,6 +14,10 @@ function TrackerBody() {
     // This will handle our updates to the times and calculation for the row
     const handleStartTimeChange = (id, time, type) => {
         dispatch(setTime({ id, time, type }));  // Dispatch Redux action for this row
+    };
+
+    const handleCommentChange = (id, comment) => {
+        dispatch(setComment({ id, comment }));  // Dispatch Redux action for comment
     };
 
     return (
@@ -61,7 +65,7 @@ function TrackerBody() {
                         disabled={true}
                     />
                 </td>
-                <td><Dropdown attachToId={`comment-${row.id}`} mapData={comment} value={row.comment} /></td>
+                <td><Dropdown attachToId={`comment-${row.id}`} mapData={comment} value={row.comment} onChange={(e) => handleCommentChange(row.id, e.target.value)}  /></td>
             </tr>
         ))}
         </tbody>
