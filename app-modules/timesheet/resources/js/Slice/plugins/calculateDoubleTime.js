@@ -9,16 +9,8 @@ const calculateDoubleTime = (date, timeStart, timeEnd, hourRange, comment, shift
     let hours;
     if(shift === 'Night')
     {
-        if(d1 < d2)
-        {
-            // Crosses midnight, so add 24 hours to d2's time
-            hours = (Math.abs(d1 - d2 + 24 * 36e5)) / 36e5;
-        }
-        else
-        {
-            // Calculate the difference of times to get the hours
-            hours = Math.abs(d1 - d2) / 36e5;
-        }
+        // Crosses midnight, so add 24 hours to d2's time
+        hours = (Math.abs((24 * 36e5) - (d1 - d2 ))) / 36e5;
     }
     else
     {

@@ -12,7 +12,7 @@ const calculateHours = (date, timeStart, timeEnd, hourRange, comment, shift) => 
     if(shift === 'Night')
     {
         // Crosses midnight, so add 24 hours to d2's time
-        hours = (Math.abs(d1 - d2 + 24 * 36e5)) / 36e5;
+        hours = (Math.abs((24 * 36e5) - (d1 - d2 ))) / 36e5;
     }
     else
     {
