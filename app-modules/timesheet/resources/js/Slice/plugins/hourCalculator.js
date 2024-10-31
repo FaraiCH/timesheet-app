@@ -1,6 +1,6 @@
 import dateSpread from "./dateSpread.js";
 
-const calculateHours = (date, timeStart, timeEnd, hourRange) => {
+const calculateHours = (date, timeStart, timeEnd, hourRange, comment) => {
     // Convert the date from datepicker and times from timepicker to a date object
     const d1 = new Date(date + " " + convertTime(timeStart));
     const d2 = new Date(date + " " + convertTime(timeEnd));
@@ -10,7 +10,7 @@ const calculateHours = (date, timeStart, timeEnd, hourRange) => {
     let hours = Math.abs(d1 - d2) / 36e5;
 
     //Check to see if it's Sunday or Saturday with 9 hours
-    if(dayName === 'Sunday' || (dayName === 'Saturday' && hourRange == 9))
+    if(dayName === 'Sunday' || comment === 'Public Holiday Worked' || (dayName === 'Saturday' && hourRange == 9))
     {
         // There is no overtime if these criteria are met
         return 0

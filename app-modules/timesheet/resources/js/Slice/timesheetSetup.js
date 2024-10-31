@@ -66,7 +66,6 @@ const timesheetSetup = createSlice({
                 } else if (type === 'end') {
                     row.endTime = time;
                 }
-                console.log(row.comment);
                 row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange);
                 row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment);
             }
@@ -74,7 +73,12 @@ const timesheetSetup = createSlice({
         setComment: (state, action) => {
             const { id, comment } = action.payload;
             const row = state.rows.find(row => row.id === id);
-            if (row) row.comment = comment;
+            if (row)
+            {
+                row.comment = comment;
+                row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment);
+                row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment);
+            }
         }
     },
 });
