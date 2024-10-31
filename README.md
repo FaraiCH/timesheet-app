@@ -8,6 +8,7 @@ A robust and user-friendly timesheet tracking application built using **React** 
 - [Technology Stack](#technology-stack)
 - [Setup and Installation](#setup-and-installation)
 - [Docker Configuration](#docker-configuration)
+- [Modular Architecture](#modular-architecture)
 - [Usage](#usage)
 - [Folder Structure](#folder-structure)
 - [Changelog](#changelog)
@@ -108,6 +109,13 @@ The application is set up with a `docker-compose.yml` file that defines two cont
       - DB_PASSWORD=passsowrd
 -     volumes:
         db_data:
+
+## Modular Architecture
+
+This project utilizes the [InterNACHI Modular](https://github.com/InterNACHI/modular) package to implement a modular architecture in Laravel. This allows for better code organization, scalability, and maintainability by structuring the application into individual, self-contained modules.
+
+For more details, see the [InterNACHI Modular repository](https://github.com/InterNACHI/modular).
+
 ## Usage
 
 1. **Accessing the App**: Go to `http://localhost:8000` to view the application.
