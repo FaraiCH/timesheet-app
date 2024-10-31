@@ -8,11 +8,10 @@ const calculateDoubleTime = (date, timeStart, timeEnd, hourRange, comment) => {
     let dayName = dateSpread(date, 0, '')
     // Calculate the difference of times to get the hours
     let hours = Math.abs(d1 - d2) / 36e5;
-    console.log(dayName, hourRange, hours);
 
-    if(dayName === 'Sunday' || comment === 'Public Holiday Worked' || (dayName === 'Saturday' && hourRange == 9)){
+    if(dayName === 'Sunday' || comment === 'Public Holiday Worked' || (dayName === 'Saturday' && hourRange == 9))
+    {
         // Make sure the hours are selected to show the hours to be calculated into double time.
-
         if(hours > 0)
         {
             return hours;

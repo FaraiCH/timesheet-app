@@ -17,7 +17,8 @@ const calculateHours = (date, timeStart, timeEnd, hourRange) => {
     }
     else
     {
-        if(hours > hourRange){
+        if(hours > hourRange)
+        {
             // We check if time is over the hour range to calculate the remaining difference
             return hours - hourRange;
         }
