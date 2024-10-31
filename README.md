@@ -10,6 +10,7 @@ A robust and user-friendly timesheet tracking application built using **React** 
 - [Docker Configuration](#docker-configuration)
 - [Usage](#usage)
 - [Folder Structure](#folder-structure)
+- [Changelog](#changelog)
 - [Contributing](#contributing)
 - [License](#license)
 
