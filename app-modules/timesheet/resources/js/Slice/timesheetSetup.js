@@ -2,7 +2,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import dateSpread from "./plugins/dateSpread.js";
 import getStartOfWeek from "./plugins/startOfWeek.js";
-import calculateHours from "./plugins/hourCalculator.js";
+import { calculateHours } from "./plugins/hourCalculator.js";
+import calculateDoubleTime from "./plugins/calculateDoubleTime.js";
 // Create the initial state for the slice of the time sheet
 // This will set the number of rows on the time sheet as well
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
         dateFormat: dateSpread(getStartOfWeek(new Date()), i, 'dateFormat'),
         hourRange: 12,
         user_id: '',
+        comment: '',
     })),
 };
 
@@ -42,12 +44,13 @@ const timesheetSetup = createSlice({
                 id: i + 1,
                 startTime: '',
                 endTime: '',
-                overtime: '',
-                doubleTime: '',
+                overtime: 0,
+                doubleTime: 0,
                 dateCaptured: dateSpread(action.payload.date, i, ''), // Here we are using the date spread to get the days according to 'Days to Capture'
                 dateFormat: dateSpread(action.payload.date, i, 'dateFormat'),
                 hourRange: action.payload.hourRange,
                 user_id: '',
+                comment: action.payload.comment,
 
             }));
         },
@@ -64,6 +67,7 @@ const timesheetSetup = createSlice({
                     row.endTime = time;
                 }
                 row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange);
+                row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.comment);
             }
         },
     },

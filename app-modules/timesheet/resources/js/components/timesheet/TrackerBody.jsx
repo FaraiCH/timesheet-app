@@ -10,7 +10,7 @@ function TrackerBody() {
     const dispatch = useDispatch();
     // We call on our configured rows from Redux. look at it like this: state => name="rows" => rows in the slice object
     const rows = useSelector(state => state.rows.rows);
-    const dateReady = useSelector(state => state.rows.dateReady);
+
     // This will handle our updates to the times and calculation for the row
     const handleStartTimeChange = (id, time, type) => {
         dispatch(setTime({ id, time, type }));  // Dispatch Redux action for this row
@@ -21,7 +21,7 @@ function TrackerBody() {
         {rows.map((row) => (
             <tr key={row.id}>
                 <td>{row.dateCaptured}</td>
-                <td><Dropdown attachToId="" mapData={shift} /></td>
+                <td><Dropdown attachToId="shift" mapData={shift} /></td>
                 <td>
                     <TimePicker
                         key={`startTimePicker-${row.id}`}
@@ -61,7 +61,7 @@ function TrackerBody() {
                         disabled={true}
                     />
                 </td>
-                <td><Dropdown attachToId="" mapData={comment} /></td>
+                <td><Dropdown attachToId={`comment-${row.id}`} mapData={comment} value={row.comment} /></td>
             </tr>
         ))}
         </tbody>
