@@ -67,7 +67,7 @@ const timesheetSetup = createSlice({
                     row.endTime = time;
                 }
                 row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange);
-                row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.comment);
+                row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment);
             }
         },
     },
