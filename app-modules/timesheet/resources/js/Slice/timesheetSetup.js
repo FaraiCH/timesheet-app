@@ -88,13 +88,13 @@ const timesheetSetup = createSlice({
                 row.shift = shift;
                 if(row.shift === 'Day')
                 {
-                    row.startTime = '06:00';
-                    row.endTime = '18:00';
+                    row.startTime = new Date(row.dateFormat + " " + "06:00:00");
+                    row.endTime = new Date(row.dateFormat + " " + "18:00:00");
                 }
                 else
                 {
-                    row.startTime = '18:00';
-                    row.endTime = '06:00';
+                    row.startTime = new Date(row.dateFormat + " " + "18:00:00");
+                    row.endTime = new Date(row.dateFormat + " " + "06:00:00");
                 }
                 row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
                 row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
