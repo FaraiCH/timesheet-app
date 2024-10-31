@@ -30,6 +30,10 @@ jobs:
         touch database/database.sqlite
     - name: Run Npm Install
       run: npm install
+    - name: Install Redux
+      run: npm install react-redux
+    - name: Install Redux Toolkit
+      run: npm install @reduxjs/toolkit
     - name: Run NPM Build
       run: npm run build
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
