@@ -10,14 +10,15 @@ const initialState = {
     numberOfRows: 5, // Default number of rows
     rows: Array.from({ length: 5 }, (_, i) => ({
         id: i + 1,
-        startTime: '',
-        endTime: '',
+        startTime: new Date(dateSpread(getStartOfWeek(new Date()), i, 'dateFormat') + " " + "06:00:00"),
+        endTime: new Date(dateSpread(getStartOfWeek(new Date()), i, 'dateFormat') + " " + "18:00:00"),
         overtime: 0,
         doubleTime: 0,
         dateCaptured: dateSpread(getStartOfWeek(new Date()), i, ''), // Keep note by default we are loading Monday to Friday in the current week
         dateFormat: dateSpread(getStartOfWeek(new Date()), i, 'dateFormat'),
         hourRange: 12,
         user_id: '',
+        shift: 'Day',
         comment: '',
     })),
 };
@@ -42,14 +43,15 @@ const timesheetSetup = createSlice({
             // This will be mapped to the timesheet controls using the variable names
             state.rows = Array.from({ length: action.payload.noRows }, (_, i) => ({
                 id: i + 1,
-                startTime: '',
-                endTime: '',
+                startTime: new Date(dateSpread(action.payload.date, i, 'dateFormat') + " " + "06:00:00"),
+                endTime: new Date(dateSpread(action.payload.date, i, 'dateFormat') + " " + "18:00:00"),
                 overtime: 0,
                 doubleTime: 0,
                 dateCaptured: dateSpread(action.payload.date, i, ''), // Here we are using the date spread to get the days according to 'Days to Capture'
                 dateFormat: dateSpread(action.payload.date, i, 'dateFormat'),
                 hourRange: action.payload.hourRange,
                 user_id: '',
+                shift: 'Day',
                 comment: action.payload.comment,
 
             }));
