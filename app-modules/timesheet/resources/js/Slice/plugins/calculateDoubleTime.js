@@ -1,13 +1,31 @@
 
 import {convertTime} from "./hourCalculator.js";
 import dateSpread from "./dateSpread.js";
-const calculateDoubleTime = (date, timeStart, timeEnd, hourRange, comment) => {
+const calculateDoubleTime = (date, timeStart, timeEnd, hourRange, comment, shift) => {
     // Convert the date from datepicker and times from timepicker to a date object
     const d1 = new Date(date + " " + convertTime(timeStart));
     const d2 = new Date(date + " " + convertTime(timeEnd));
-    let dayName = dateSpread(date, 0, '')
-    // Calculate the difference of times to get the hours
-    let hours = Math.abs(d1 - d2) / 36e5;
+    let dayName = dateSpread(date, 0, '');
+    let hours;
+    if(shift === 'Night')
+    {
+        if(d1 < d2)
+        {
+            // Crosses midnight, so add 24 hours to d2's time
+            hours = (Math.abs(d1 - d2 + 24 * 36e5)) / 36e5;
+        }
+        else
+        {
+            // Calculate the difference of times to get the hours
+            hours = Math.abs(d1 - d2) / 36e5;
+        }
+    }
+    else
+    {
+        // Calculate the difference of times to get the hours
+        hours = Math.abs(d1 - d2) / 36e5;
+    }
+
 
     if(dayName === 'Sunday' || comment === 'Public Holiday Worked' || (dayName === 'Saturday' && hourRange == 9))
     {

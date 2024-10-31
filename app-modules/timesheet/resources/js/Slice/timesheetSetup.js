@@ -66,8 +66,8 @@ const timesheetSetup = createSlice({
                 } else if (type === 'end') {
                     row.endTime = time;
                 }
-                row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange);
-                row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment);
+                row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
+                row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
             }
         },
         setComment: (state, action) => {
@@ -76,8 +76,28 @@ const timesheetSetup = createSlice({
             if (row)
             {
                 row.comment = comment;
-                row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment);
-                row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment);
+                row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
+                row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
+            }
+        },
+        setShift: (state, action) => {
+            const { id, shift } = action.payload;
+            const row = state.rows.find(row => row.id === id);
+            if (row)
+            {
+                row.shift = shift;
+                if(row.shift === 'Day')
+                {
+                    row.startTime = '06:00';
+                    row.endTime = '18:00';
+                }
+                else
+                {
+                    row.startTime = '18:00';
+                    row.endTime = '06:00';
+                }
+                row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
+                row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
             }
         }
     },
@@ -85,5 +105,5 @@ const timesheetSetup = createSlice({
 
 // Here we create an action that will be able to be used on both the side Menu and TimeSheet in order to dispatch a change in state
 // to the target component
-export const { setSideMenu, setTime, setComment } = timesheetSetup.actions;
+export const { setSideMenu, setTime, setComment, setShift } = timesheetSetup.actions;
 export default timesheetSetup.reducer;
