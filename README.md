@@ -61,7 +61,7 @@ A robust and user-friendly timesheet tracking application built using **React** 
       ```bash
       docker-compose up -d
       ```
-    - The application will be available at `http://localhost` by default, and the database at `localhost:3306`.
+    - The application will be available at `http://localhost:8002` by default, and the database at `localhost:3306`.
 
 5. **Database Migration**
     - Run the migrations to set up the database tables:
