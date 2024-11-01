@@ -2,12 +2,11 @@
 
 namespace Modules\Timesheet\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class TrackController extends Controller
+class TrackingController
 {
     public function index()
     {
@@ -18,5 +17,10 @@ class TrackController extends Controller
                 'phpVersion'     => PHP_VERSION,
             ]
         );
+    }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
     }
 }
