@@ -13,8 +13,8 @@ services:
         environment:
             - DB_HOST=db
             - DB_DATABASE=timesheet_dev
-            - DB_USERNAME=farai
-            - DB_PASSWORD=@Paradice1
+            - DB_USERNAME=user
+            - DB_PASSWORD=password
 
     db:
         image: mysql:5.7
@@ -22,8 +22,8 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: timesheet_dev
-            MYSQL_USER: farai
-            MYSQL_PASSWORD: '@Paradice1'
+            MYSQL_USER: user
+            MYSQL_PASSWORD: '@password'
         volumes:
             - db_data:/var/lib/mysql
             - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
