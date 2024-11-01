@@ -7,6 +7,7 @@ function Table(){
                 <th>Shift</th>
                 <th>Start Time</th>
                 <th>End Time</th>
+                <th>Normal</th>
                 <th>Overtime</th>
                 <th>Double</th>
                 <th>Comment</th>

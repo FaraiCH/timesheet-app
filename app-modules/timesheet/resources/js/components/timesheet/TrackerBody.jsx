@@ -52,11 +52,22 @@ function TrackerBody() {
                 <td>
                     <Input
                         type="number"
+                        placeholder="Normal"
+                        name=""
+                        value={row.normal} // This will be updated according to the action dispatched by startTime and endTime
+                        attachToId={`normal-${row.id}`}
+                        disabled={true}
+                    />
+                </td>
+                <td>
+                    <Input
+                        type="number"
                         placeholder="Overtime"
                         name=""
                         value={row.overtime} // This will be updated according to the action dispatched by startTime and endTime
                         attachToId={`overtime-${row.id}`}
                         disabled={true}
+
                     />
                 </td>
                 <td>
