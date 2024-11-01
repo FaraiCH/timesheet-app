@@ -13,6 +13,7 @@ A robust and user-friendly timesheet tracking application built using **React** 
 - [Folder Structure](#folder-structure)
 - [Changelog](#changelog)
 - [Contributing](#contributing)
+- [Automated Workflow: From Development to Production Deployment](#automated-workflow-from-development-to-production-deployment)
 - [License](#license)
 
 ## Features
