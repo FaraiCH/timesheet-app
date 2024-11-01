@@ -4,6 +4,7 @@ import dateSpread from "./plugins/dateSpread.js";
 import getStartOfWeek from "./plugins/startOfWeek.js";
 import { calculateHours } from "./plugins/hourCalculator.js";
 import calculateDoubleTime from "./plugins/calculateDoubleTime.js";
+import calculateNormalTime from "./plugins/calculateNormalTime.js";
 // Create the initial state for the slice of the time sheet
 // This will set the number of rows on the time sheet as well
 const initialState = {
@@ -12,7 +13,7 @@ const initialState = {
         id: i + 1,
         startTime: new Date(dateSpread(getStartOfWeek(new Date()), i, 'dateFormat') + " " + "06:00:00"),
         endTime: new Date(dateSpread(getStartOfWeek(new Date()), i, 'dateFormat') + " " + "18:00:00"),
-        normal: 0,
+        normal: 12,
         overtime: 0,
         doubleTime: 0,
         dateCaptured: dateSpread(getStartOfWeek(new Date()), i, ''), // Keep note by default we are loading Monday to Friday in the current week
@@ -46,9 +47,9 @@ const timesheetSetup = createSlice({
                 id: i + 1,
                 startTime: new Date(dateSpread(action.payload.date, i, 'dateFormat') + " " + "06:00:00"),
                 endTime: new Date(dateSpread(action.payload.date, i, 'dateFormat') + " " + "18:00:00"),
-                normal: action.payload.hourRange,
-                overtime: calculateHours(action.payload.date, new Date(dateSpread(action.payload.date, i, 'dateFormat') + " " + "06:00:00"), new Date(dateSpread(action.payload.date, i, 'dateFormat') + " " + "18:00:00"), action.payload.hourRange, action.payload.comment, action.payload.shift),
-                doubleTime: calculateDoubleTime(action.payload.date, new Date(dateSpread(action.payload.date, i, 'dateFormat') + " " + "06:00:00"), new Date(dateSpread(action.payload.date, i, 'dateFormat') + " " + "18:00:00"), action.payload.hourRange, action.payload.comment, action.payload.shift),
+                normal: calculateNormalTime(dateSpread(action.payload.date, i, 'dateFormat'), (dateSpread(action.payload.date, i, 'dateFormat') + " " + "06:00:00"), (dateSpread(action.payload.date, i, 'dateFormat') + " " + "18:00:00"), action.payload.hourRange),
+                overtime: calculateHours(dateSpread(action.payload.date, i, 'dateFormat'), (dateSpread(action.payload.date, i, 'dateFormat') + " " + "06:00:00"), (dateSpread(action.payload.date, i, 'dateFormat') + " " + "18:00:00"), action.payload.hourRange, action.payload.comment, action.payload.shift),
+                doubleTime: calculateDoubleTime(dateSpread(action.payload.date, i, 'dateFormat'), (dateSpread(action.payload.date, i, 'dateFormat') + " " + "06:00:00"), (dateSpread(action.payload.date, i, 'dateFormat') + " " + "18:00:00"), action.payload.hourRange, action.payload.comment, action.payload.shift),
                 dateCaptured: dateSpread(action.payload.date, i, ''), // Here we are using the date spread to get the days according to 'Days to Capture'
                 dateFormat: dateSpread(action.payload.date, i, 'dateFormat'),
                 hourRange: action.payload.hourRange,
@@ -70,6 +71,7 @@ const timesheetSetup = createSlice({
                 } else if (type === 'end') {
                     row.endTime = time;
                 }
+                row.normal = calculateNormalTime(row.dateFormat, row.startTime, row.endTime, row.hourRange);
                 row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
                 row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
             }
@@ -80,6 +82,7 @@ const timesheetSetup = createSlice({
             if (row)
             {
                 row.comment = comment;
+                row.normal = calculateNormalTime(row.dateFormat, row.startTime, row.endTime, row.hourRange);
                 row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
                 row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
             }
@@ -100,6 +103,7 @@ const timesheetSetup = createSlice({
                     row.startTime = new Date(row.dateFormat + " " + "18:00:00");
                     row.endTime = new Date(row.dateFormat + " " + "06:00:00");
                 }
+                row.normal = calculateNormalTime(row.dateFormat, row.startTime, row.endTime, row.hourRange);
                 row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
                 row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
             }

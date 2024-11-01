@@ -18,7 +18,6 @@ const calculateDoubleTime = (date, timeStart, timeEnd, hourRange, comment, shift
         hours = Math.abs(d1 - d2) / 36e5;
     }
 
-
     if(dayName === 'Sunday' || comment === 'Public Holiday Worked' || (dayName === 'Saturday' && hourRange == 9))
     {
         // Make sure the hours are selected to show the hours to be calculated into double time.
