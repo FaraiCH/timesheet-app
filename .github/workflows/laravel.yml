@@ -41,3 +41,35 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: php artisan test
+      
+  deploy:
+    name: Deploy to Production Server
+    needs: laravel-tests  # Ensure tests pass before deploying
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'  # Only deploy on main branch pushes
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H your.production.server >> ~/.ssh/known_hosts
+
+      - name: Deploy to Production Server
+        env:
+          USER: farai
+          SERVER: ${{ secrets.SERVER_IP }}
+          APP_DIR: /var/www/timesheet-app
+        run: |
+          ssh $USER@$SERVER "
+          cd $APP_DIR && git fetch && git merge origin main &&
+           # Run migrations
+          php artisan migrate --force
+          # Add any additional commands here, like installing dependencies or restarting services
+          "      
