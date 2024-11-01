@@ -68,8 +68,8 @@ jobs:
           APP_DIR: /var/www/timesheet-app
         run: |
           ssh $USER@$SERVER "
-          sudo su && cd $APP_DIR && git fetch && git merge origin main &&
+          cd $APP_DIR && sudo git fetch &&  sudo git merge origin main && sudo npm run build &&
            # Run migrations
-          php artisan migrate --force
+          sudo php artisan migrate --force
           # Add any additional commands here, like installing dependencies or restarting services
           "      
