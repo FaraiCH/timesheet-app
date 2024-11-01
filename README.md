@@ -167,11 +167,11 @@ Contributions are welcome! Please follow these steps:
 3. Commit your changes with descriptive messages.
 4. Push to the branch and open a pull request.
 
-# Automated Workflow: From Development to Production Deployment
+## Automated Workflow: From Development to Production Deployment
 
 This workflow (Git Actions) is designed to streamline the deployment process, ensuring that each pull request undergoes unit testing and is properly built and deployed to the production environment. Below are the steps and checks the workflow follows to maintain code quality and automate deployment.
 
-## Workflow Steps
+### Workflow Steps
 
 1. **Starts with a Pull Request**
     - The workflow is begins when someone creates a pull request pointing to the `main` branch.
