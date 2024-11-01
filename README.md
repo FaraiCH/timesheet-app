@@ -58,7 +58,7 @@ A robust and user-friendly timesheet tracking application built using **React** 
       npm install redux @redux-toolkit
       ```
 
-> ⚠️ **NB:** You can do the same as above for the docker ubuntu container by using the command: `docker exec -it <container-name>`.
+> ⚠️ **NB:** You can do the same as the above inside the docker ubuntu container by using the command: `docker exec -it <container-name>`.
 
 
 4. **Set Up Docker Containers**
