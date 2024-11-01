@@ -53,7 +53,13 @@ A robust and user-friendly timesheet tracking application built using **React** 
     - Install the frontend dependencies:
       ```bash
       npm install
+    - Install redux and redux tool-kit:
+      ```bash
+      npm install redux @redux-toolkit
       ```
+
+> ⚠️ **NB:** You can do the same as above for the docker ubuntu container by using the command: `docker exec -it <container-name>`.
+
 
 4. **Set Up Docker Containers**
     - Ensure Docker is installed and running.
@@ -127,9 +133,8 @@ For more details, see the [InterNACHI Modular repository](https://github.com/Int
 ## Folder Structure
 
 ```plaintext
-.
 ├── app               # Laravel application files
-├── app-module        # Modules folder for modular react components
+├── app-module        # Modules folder for modular react components (where our functions go)
 ├── bootstrap         # Boostrap config
 ├── config            # App config files
 ├── init-db.sql       # Folder for all extracted database
@@ -140,8 +145,15 @@ For more details, see the [InterNACHI Modular repository](https://github.com/Int
 ├── docker-compose.yml
 ├── Dockerfile
 ├── .env.example      # Example environment configuration
+├── CHANGELOG.md      # holds are feature updates and bug fixes
+├── artisan           # Handles artisan commands
+├── README.md         # Project documentation
+├── jsconfig.json     # 
 ├── package.json      # Node.js dependencies
-└── README.md         # Project documentation
+├── phpunit.xml       # PHP Unit Testing configurations
+├── postcss.config.js   
+├── tailwind.config.js   
+├── vite.config.js    # Bundler for the pplication resources   
 ```
 ## Changelog
 
@@ -154,6 +166,48 @@ Contributions are welcome! Please follow these steps:
 2. Create a new branch with your feature or bugfix.
 3. Commit your changes with descriptive messages.
 4. Push to the branch and open a pull request.
+
+# Automated Workflow: From Development to Production Deployment
+
+This workflow (Git Actions) is designed to streamline the deployment process, ensuring that each pull request undergoes unit testing and is properly built and deployed to the production environment. Below are the steps and checks the workflow follows to maintain code quality and automate deployment.
+
+## Workflow Steps
+
+1. **Starts with a Pull Request**
+    - The workflow is begins when someone creates a pull request pointing to the `main` branch.
+    - This initiates the review process (handled by me) and ensures the code is up-to-date with the latest standards and practices.
+
+2. **Run Unit Tests on Approved Pull Requests**
+    - Once the pull request has been approved and merging begins, the workflow automatically initiates unit tests.
+    - This is done to verify that the code changes do not introduce any bugs or break existing functionality.
+    - **Outcome**: If the unit tests fail, the process halts, and the merge will not proceed until the issues are resolved. Depending on the severity of the fail, a revert may be applied.
+
+3. **Login to Production Server**
+    - If all tests pass, the workflow connects to the production server via SSH.
+    - This secure connection ensures the environment is ready to accept the new changes.
+
+4. **Fetch and Merge Main**
+    - Once logged in, the workflow fetches the latest code from the `main` branch and merges it.
+    - This ensures that the server has the latest updates without disrupting any ongoing processes.
+
+5. **Rebuild the Project**
+    - After merging, the workflow runs `npm run build` to compile and bundle the project files.
+    - This step prepares the project for production, ensuring all assets and dependencies are correctly configured.
+
+6. **Run Migrations**
+    - Finally, if there are database migrations pending, the workflow runs them to apply any schema changes.
+    - This step is crucial for maintaining database consistency with the latest codebase.
+
+## Usage
+
+1. **PR Creation**: Create a pull request targeting the `main` branch.
+2. **PR Approval and Merge**: Once the PR is reviewed and approved by me, I initiate the merge.
+3. **Automated Testing and Deployment**: The workflow will handle the testing, merging, building, and deploying steps automatically.
+
+---
+
+This automated workflow provides a reliable process for deploying updates, minimizing manual effort and ensuring smooth, error-free deployment to production.
+
 
 ## License
 
