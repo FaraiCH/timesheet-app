@@ -5,6 +5,7 @@ import getStartOfWeek from "./plugins/startOfWeek.js";
 import { calculateHours } from "./plugins/hourCalculator.js";
 import calculateDoubleTime from "./plugins/calculateDoubleTime.js";
 import calculateNormalTime from "./plugins/calculateNormalTime.js";
+
 // Create the initial state for the slice of the time sheet
 // This will set the number of rows on the time sheet as well
 const initialState = {
@@ -62,7 +63,7 @@ const timesheetSetup = createSlice({
         // This concerns the actual Time Sheet
         setTime: (state, action) => {
             const {id, time, type } = action.payload; // Here, our action payload has an object which we deconstruct
-            // We are getting the rows abd finding the matching ids for those rows and doing calculations with them
+
             const row = state.rows.find(row => row.id === id);
             if(row)
             {
@@ -106,6 +107,7 @@ const timesheetSetup = createSlice({
                 row.normal = calculateNormalTime(row.dateFormat, row.startTime, row.endTime, row.hourRange);
                 row.overtime = calculateHours(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
                 row.doubleTime = calculateDoubleTime(row.dateFormat, row.startTime, row.endTime, row.hourRange, row.comment, row.shift);
+
             }
         },
     },

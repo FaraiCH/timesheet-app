@@ -1,27 +1,25 @@
 import Dropdown from "./Dropdown.jsx";
 import TimePicker from "./TimePicker.jsx";
 import Input from "./Input.jsx";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { setTime, setComment, setShift } from '../../Slice/timesheetSetup.js';
 import { shift, comment } from "./dropdownContent/content.js";
+
 
 function TrackerBody() {
     // We are going to be "dispatching" data in order to update/override the initial state concerning the time sheet
     const dispatch = useDispatch();
-    // We call on our configured rows from Redux. look at it like this: state => name="rows" => rows in the slice object
-    const rows = useSelector(state => state.rows.rows);
 
-    // This will handle our updates to the times and calculation for the row
     const handleStartTimeChange = (id, time, type) => {
-        dispatch(setTime({ id, time, type }));  // Dispatch Redux action for this row
+        dispatch(setTime({ id, time, type })); // Dispatch Redux action for this row
     };
 
     const handleCommentChange = (id, comment) => {
-        dispatch(setComment({ id, comment }));  // Dispatch Redux action for comment
+        dispatch(setComment({ id, comment })); // Dispatch Redux action for comment
     };
 
     const handleShiftChange = (id, shift) => {
-        dispatch(setShift({ id, shift }));  // Dispatch Redux action for comment
+        dispatch(setShift({ id, shift })); // Dispatch Redux action for shift
     };
 
     return (

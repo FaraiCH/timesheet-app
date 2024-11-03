@@ -1,8 +1,6 @@
 import dateSpread from "./dateSpread.js";
 
 const calculateHours = (date, timeStart, timeEnd, hourRange, comment, shift) => {
-
-    console.log(timeStart);
     // Convert the date from datepicker and times from timepicker to a date object
     const d1 = new Date(date + " " + convertTime(timeStart));
     const d2 = new Date(date + " " + convertTime(timeEnd));
