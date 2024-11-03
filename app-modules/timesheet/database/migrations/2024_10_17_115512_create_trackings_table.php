@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('trackings', function (Blueprint $table) {
             $table->id();
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->decimal('normal')->default(0);
+            $table->decimal('overtime')->default(0);
+            $table->decimal('double_time')->default(0);
+            $table->date('date_format');
+            $table->string('date_captured')->default(0);
+            $table->integer('hour_range')->default(0);
+            $table->string('shift')->nullable();
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }
