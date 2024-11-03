@@ -28,6 +28,9 @@ class TrackingController
 
     public function store(Request $request)
     {
+        // Use dd() to check data in real-time (if no logging)
+        dd($request->all());
+
         //Todo: use data retrieved to store it in the Time Sheet Data Transfer Object. Template bellow
 //        $timesheetDTO = new TimeSheetDTO(
 //            $request->input('name'),
@@ -42,9 +45,7 @@ class TrackingController
 //            $request->input('password'),
 //        );
 
-        $timesheet = $this->timeSheetService->createTimeSheetRecord($timesheetDTO);
+//        $timesheet = $this->timeSheetService->createTimeSheetRecord($timesheetDTO);
 
-        // Use dd() to check data in real-time (if no logging)
-        dd($request->all());
     }
 }
