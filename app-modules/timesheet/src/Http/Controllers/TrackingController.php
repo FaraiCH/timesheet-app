@@ -28,18 +28,19 @@ class TrackingController
 
     public function store(Request $request)
     {
-        $timesheetDTO = new TimeSheetDTO(
-            $request->input('name'),
-            $request->input('email'),
-            $request->input('password'),
-            $request->input('password'),
-            $request->input('password'),
-            $request->input('password'),
-            $request->input('password'),
-            $request->input('password'),
-            $request->input('password'),
-            $request->input('password'),
-        );
+        //Todo: use data retrieved to store it in the Time Sheet Data Transfer Object. Template bellow
+//        $timesheetDTO = new TimeSheetDTO(
+//            $request->input('name'),
+//            $request->input('email'),
+//            $request->input('password'),
+//            $request->input('password'),
+//            $request->input('password'),
+//            $request->input('password'),
+//            $request->input('password'),
+//            $request->input('password'),
+//            $request->input('password'),
+//            $request->input('password'),
+//        );
 
         $timesheet = $this->timeSheetService->createTimeSheetRecord($timesheetDTO);
 
