@@ -45,7 +45,7 @@ function Table(){
             </thead>
             <TrackerBody />
         </table>
-        <Button type="submit" name="Save Records"/> // This should trigger our submit that will send our data to the backend
+        <Button type="submit" name="Save Records"/> {/* This should trigger our submit that will send our data to the backend */}
     </Form>
 
 }
