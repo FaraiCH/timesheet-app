@@ -28,24 +28,25 @@ class TrackingController
 
     public function store(Request $request)
     {
-        // Use dd() to check data in real-time (if no logging)
-        dd($request->all());
 
-        //Todo: use data retrieved to store it in the Time Sheet Data Transfer Object. Template bellow
-//        $timesheetDTO = new TimeSheetDTO(
-//            $request->input('name'),
-//            $request->input('email'),
-//            $request->input('password'),
-//            $request->input('password'),
-//            $request->input('password'),
-//            $request->input('password'),
-//            $request->input('password'),
-//            $request->input('password'),
-//            $request->input('password'),
-//            $request->input('password'),
-//        );
+        foreach ($request->all()['rows'] as $row){
 
-//        $timesheet = $this->timeSheetService->createTimeSheetRecord($timesheetDTO);
+            $startTime = new \DateTime($row['startTime']);
+            $endTime = new \DateTime($row['endTime']);
+            //Todo: use data retrieved to store it in the Time Sheet Data Transfer Object. Template bellow
+            $timesheetDTO = new TimeSheetDTO(
+                $startTime->format('H:i:s'),
+                $endTime->format('H:i:s'),
+                $row['normal'],
+                $row['overtime'],
+                $row['doubleTime'],
+                $row['dateCaptured'],
+                $row['dateFormat'],
+                $row['hourRange'],
+                $row['shift'],
+            );
+        }
 
+        $this->timeSheetService->createTimeSheetRecord($timesheetDTO);
     }
 }

@@ -15,9 +15,8 @@ class TimeSheetDTO
     public $hourRange;
     public $shift;
 
-    public function __construct($id, $startTime, $endTime, $normal, $overTime, $doubleTime, $dateCaptured, $dateFormat, $hourRange, $shift)
+    public function __construct($startTime, $endTime, $normal, $overTime, $doubleTime, $dateCaptured, $dateFormat, $hourRange, $shift)
     {
-        $this->id = $id;
         $this->startTime = $startTime;
         $this->endTime = $endTime;
         $this->normal = $normal;
