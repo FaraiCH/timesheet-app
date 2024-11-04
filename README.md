@@ -75,6 +75,21 @@ A robust and user-friendly timesheet tracking application built using **React** 
       ```bash
       php artisan migrate
       ```
+6. **Install Module Support**
+    - Install this to make sure your app has module support. This will help in decoupling our app functions:
+      ```bash
+      composer require internachi/modular
+      ```
+7. **Compile Modules**
+    - You might need to run the following command to handle the modules in app-modules:
+      ```bash
+      php composer update modules/timesheet
+      ```
+8. **Optional Module Sync**
+    - You can optionally run this command to sync the modules as well:
+      ```bash
+      php php artisan modules:sync
+      ```
 
 ## Docker Configuration
 
