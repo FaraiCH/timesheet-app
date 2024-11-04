@@ -7,7 +7,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return redirect('/dashboard');
-});
+})->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
