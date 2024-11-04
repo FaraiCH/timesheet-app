@@ -17,6 +17,7 @@ class TimeSheetDTO
 
     public function __construct($startTime, $endTime, $normal, $overTime, $doubleTime, $dateCaptured, $dateFormat, $hourRange, $shift)
     {
+        // We initialise all our fields to save to the Timesheet data table
         $this->startTime = $startTime;
         $this->endTime = $endTime;
         $this->normal = $normal;

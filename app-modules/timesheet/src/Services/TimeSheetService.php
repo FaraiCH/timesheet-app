@@ -9,6 +9,8 @@ class TimeSheetService
 {
     public function createTimeSheetRecord(TimeSheetDTO $timeSheetDTO) : Tracking
     {
+        //Here we can create and save our data from time tracking DTO and saving to the Tracking Model
+        //This helps to de-couple the business logic from the presentation logic
         $timesheet = new Tracking();
         $timesheet->start_time = $timeSheetDTO->startTime;
         $timesheet->end_time = $timeSheetDTO->endTime;

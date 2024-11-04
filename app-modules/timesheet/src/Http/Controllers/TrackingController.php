@@ -31,10 +31,11 @@ class TrackingController
 
         foreach ($request->all()['rows'] as $row){
 
+            // Convert Time object to savable datetime object
             $startTime = new \DateTime($row['startTime']);
             $endTime = new \DateTime($row['endTime']);
-            //Todo: use data retrieved to store it in the Time Sheet Data Transfer Object. Template bellow
             $timesheetDTO = new TimeSheetDTO(
+                // We format the dateTime object to just get time
                 $startTime->format('H:i:s'),
                 $endTime->format('H:i:s'),
                 $row['normal'],
@@ -47,6 +48,7 @@ class TrackingController
             );
         }
 
+        // The function createTimeSheetrecord will handle creating and saving to the database
         $this->timeSheetService->createTimeSheetRecord($timesheetDTO);
     }
 }
