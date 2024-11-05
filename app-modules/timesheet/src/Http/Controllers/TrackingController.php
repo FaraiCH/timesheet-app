@@ -28,9 +28,7 @@ class TrackingController
 
     public function store(Request $request)
     {
-
         foreach ($request->all()['rows'] as $row){
-
             // Convert Time object to savable datetime object
             $startTime = new \DateTime($row['startTime']);
             $endTime = new \DateTime($row['endTime']);
@@ -46,9 +44,12 @@ class TrackingController
                 $row['hourRange'],
                 $row['shift'],
             );
+            // The function createTimeSheetRecord will handle creating and saving to the database
+            $this->timeSheetService->createTimeSheetRecord($timesheetDTO);
         }
-
-        // The function createTimeSheetrecord will handle creating and saving to the database
-        $this->timeSheetService->createTimeSheetRecord($timesheetDTO);
+        return redirect()->route('timesheet.tracking.index')->with('message', [
+                'type' => 'success',
+                'body' => 'Records were saved successfully!'
+            ]);
     }
 }
