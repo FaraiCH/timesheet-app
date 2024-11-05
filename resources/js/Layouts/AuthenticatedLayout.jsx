@@ -44,6 +44,20 @@ export default function Authenticated({ header, children }) {
 
                                     Timesheet
                                 </NavLink>
+                                <NavLink
+                                    href={route('team.user.index')}
+                                    active={route().current('team.user.index')}
+                                >
+
+                                    Team Members
+                                </NavLink>
+                                <NavLink
+                                    href={route('team.organisation.index')}
+                                    active={route().current('team.organisation.index')}
+                                >
+
+                                    Organisation
+                                </NavLink>
                             </div>
                         </div>
 
