@@ -54,10 +54,15 @@ A robust and user-friendly timesheet tracking application built using **React** 
     - Install the frontend dependencies:
       ```bash
       npm install
+      ```
     - Install redux and redux tool-kit:
       ```bash
       npm install react-redux @reduxjs/toolkit
       ```
+   - Install React Hot Toast:
+     ```bash
+     npm npm install react-hot-toast
+     ```
 
 > ⚠️ **NB:** You can do the same as the above inside the docker ubuntu container by using the command: `docker exec -it <container-name> bash`. Make sure you're not root! If you are, change to user `ubunutu` by typing `su ubuntu`
 
