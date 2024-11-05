@@ -34,6 +34,8 @@ jobs:
       run: npm install react-redux
     - name: Install Redux Toolkit
       run: npm install @reduxjs/toolkit
+    - name: Install Toast
+      run: npm install react-hot-toast
     - name: Run NPM Build
       run: npm run build
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
