@@ -149,6 +149,14 @@ export default function Authenticated({ header, children }) {
                             Dashboard
                         </ResponsiveNavLink>
                     </div>
+                    <div className="space-y-1 pb-3 pt-2">
+                        <ResponsiveNavLink
+                            href={route('timesheet.tracking.index')}
+                            active={route().current('timesheet.tracking.index')}
+                        >
+                            Timesheet
+                        </ResponsiveNavLink>
+                    </div>
 
                     <div className="border-t border-gray-200 pb-1 pt-4">
                         <div className="px-4">
