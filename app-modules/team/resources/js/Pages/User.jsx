@@ -2,7 +2,9 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.jsx";
 import {Head} from "@inertiajs/react";
 import {Provider} from "react-redux";
 import Store from "../../../../timesheet/resources/js/Store/Store.jsx";
-
+import '../../.././../assets/css/bootstrap.min.css';
+import '../../../../assets/js/bootstrap.bundle.min.js';
+import Table from '../components/Table.jsx'
 export default function User()
 {
     return (
@@ -15,12 +17,11 @@ export default function User()
         >
             <Head title="Team Members" />
             <Provider store={Store}>
-                <div className="flex min-h-screen">
-                    <div className="py-12 w-4/4">
-                        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                            <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                                <div className="p-6 text-gray-900">
-                                </div>
+                <div className="py-12">
+                    <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                        <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                            <div className="p-6 text-gray-900">
+                                <Table />
                             </div>
                         </div>
                     </div>

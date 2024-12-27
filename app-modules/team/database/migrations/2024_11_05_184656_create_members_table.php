@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\Modules\Team\Models\Organisation::class);
+            $table->string('name');
+            $table->string('surname');
             $table->timestamps();
         });
     }
