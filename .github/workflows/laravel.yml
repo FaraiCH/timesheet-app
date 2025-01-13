@@ -36,6 +36,8 @@ jobs:
       run: npm install @reduxjs/toolkit
     - name: Install Toast
       run: npm install react-hot-toast
+    - name: Install Lucide React
+      run: npm install lucide-react
     - name: Run NPM Build
       run: npm run build
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
