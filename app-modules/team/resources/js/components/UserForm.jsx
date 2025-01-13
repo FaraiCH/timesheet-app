@@ -7,7 +7,6 @@ const defaultUser = {
     email: '',
     role: 'user'
 };
-
 export function UserForm({ initialMode = 'view', user, onSubmit, onCancel }) {
     const [mode, setMode] = useState(initialMode);
     const [formData, setFormData] = useState(user || defaultUser);
