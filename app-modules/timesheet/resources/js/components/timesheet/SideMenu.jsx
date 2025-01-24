@@ -3,7 +3,7 @@ import DatePicker from "./DatePicker.jsx";
 import {setSideMenu} from "../../Slice/timesheetSetup.js";
 import {useDispatch} from "react-redux";
 import HourRange from "./HourRange.jsx";
-
+import Autocomplete from "./Autocomplete.jsx";
 function SideMenu()
 {
     // We are going to be dispatching here because we want the data to be used
@@ -24,7 +24,7 @@ function SideMenu()
     return <form onSubmit={handleSubmit}>
         <div className="mb-3">
             <label htmlFor="input1" className="form-label">Team Member</label>
-            <Input />
+            <Autocomplete attachToId="dropdownAuto" placeholder="Choose Employee" />
         </div>
 
         <div className="mb-3">
