@@ -21,6 +21,7 @@ class TimeSheetService
         $timesheet->date_format = $timeSheetDTO->dateFormat;
         $timesheet->hour_range = $timeSheetDTO->hourRange;
         $timesheet->shift = $timeSheetDTO->shift;
+        $timesheet->member_id = $timeSheetDTO->member_id;
         $timesheet->save();
         return $timesheet;
     }

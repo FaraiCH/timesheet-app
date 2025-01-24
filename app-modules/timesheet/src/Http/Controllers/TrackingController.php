@@ -43,6 +43,7 @@ class TrackingController
                 $row['dateFormat'],
                 $row['hourRange'],
                 $row['shift'],
+                $row['user_id']
             );
             // The function createTimeSheetRecord will handle creating and saving to the database
             $this->timeSheetService->createTimeSheetRecord($timesheetDTO);

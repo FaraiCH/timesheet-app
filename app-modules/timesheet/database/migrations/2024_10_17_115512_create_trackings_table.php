@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('hour_range')->default(0);
             $table->string('shift')->nullable();
             $table->string('comment')->nullable();
+            $table->foreignIdFor(\Modules\Team\Models\Member::class)->nullable();
             $table->timestamps();
         });
     }
