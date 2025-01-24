@@ -5,14 +5,14 @@ function Autocomplete(props)
     const autoCompleteRef = useRef(null);  // Ref to store the TimePicker instance
 
     let sportsData = [
-        { Id: 'Game1', Game: 'Badminton' },
-        { Id: 'Game2', Game: 'Basketball' },
-        { Id: 'Game3', Game: 'Cricket' },
-        { Id: 'Game4', Game: 'Football' },
-        { Id: 'Game5', Game: 'Golf' },
-        { Id: 'Game6', Game: 'Hockey' },
-        { Id: 'Game7', Game: 'Rugby' },
-        { Id: 'Game8', Game: 'Snooker' }
+        { Id: '1', Game: 'Farai' },
+        { Id: '2', Game: 'Chad' },
+        { Id: '3', Game: 'Gable' },
+        { Id: '4', Game: 'Otto' },
+        { Id: '5', Game: 'Levy' },
+        { Id: '6', Game: 'Gary' },
+        { Id: '7', Game: 'Sipho' },
+        { Id: '8', Game: 'Soul' }
     ];
 
     useEffect(() => {
