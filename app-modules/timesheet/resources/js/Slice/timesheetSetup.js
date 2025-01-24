@@ -44,6 +44,7 @@ const timesheetSetup = createSlice({
             state.numberOfRows = action.payload.noRows; // Using the action payload to get the days to be captured from Side Menu
             // Bellow we are looping through action.payload.noRows that came from the side Menu
             // This will be mapped to the timesheet controls using the variable names
+            console.log(action.payload.member);
             state.rows = Array.from({ length: action.payload.noRows }, (_, i) => ({
                 id: i + 1,
                 startTime: new Date(dateSpread(action.payload.date, i, 'dateFormat') + " " + "06:00:00"),
@@ -54,7 +55,7 @@ const timesheetSetup = createSlice({
                 dateCaptured: dateSpread(action.payload.date, i, ''), // Here we are using the date spread to get the days according to 'Days to Capture'
                 dateFormat: dateSpread(action.payload.date, i, 'dateFormat'),
                 hourRange: action.payload.hourRange,
-                user_id: '',
+                user_id: action.payload.member,
                 shift: 'Day',
                 comment: action.payload.comment,
 

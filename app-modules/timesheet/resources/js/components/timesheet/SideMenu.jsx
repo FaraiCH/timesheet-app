@@ -17,8 +17,9 @@ function SideMenu()
         const numberOfRows = formData.get('numberOfRows');
         const dateCaptured = formData.get('date');
         const hourRange = formData.get('slider');
+        const member = formData.get('dropdownAuto');
         // Notice I am passing an object to the setSideMenu reducer. Remember, this reducer holds our state and action payload
-        dispatch(setSideMenu({noRows: Number(numberOfRows), date: dateCaptured, hourRange: hourRange}));
+        dispatch(setSideMenu({noRows: Number(numberOfRows), date: dateCaptured, hourRange: hourRange, member: member}));
     };
 
     return <form onSubmit={handleSubmit}>
