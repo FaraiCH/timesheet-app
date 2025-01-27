@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
+use Modules\Team\Models\Member;
 use Modules\Timesheet\DTO\TimeSheetDTO;
 use Modules\Timesheet\Services\TimeSheetService;
 class TrackingController
@@ -17,11 +18,16 @@ class TrackingController
     }
     public function index()
     {
+        // Fetch members from the database (modify the query as needed)
+        $members = Member::select('id', 'name')->get();
+
+        // Pass the members data to the Inertia view along with other data
         return Inertia::render(
             'Timesheet::Tracking',
             [
                 'laravelVersion' => Application::VERSION,
                 'phpVersion'     => PHP_VERSION,
+                'members'        => $members, // Add members data here
             ]
         );
     }

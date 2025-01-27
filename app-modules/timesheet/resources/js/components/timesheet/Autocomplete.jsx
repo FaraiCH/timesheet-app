@@ -4,34 +4,30 @@ function Autocomplete(props)
 {
     const autoCompleteRef = useRef(null);  // Ref to store the TimePicker instance
 
-    let sportsData = [
-        { Id: '1', Game: 'Farai' },
-        { Id: '2', Game: 'Chad' },
-        { Id: '3', Game: 'Gable' },
-        { Id: '4', Game: 'Otto' },
-        { Id: '5', Game: 'Levy' },
-        { Id: '6', Game: 'Gary' },
-        { Id: '7', Game: 'Sipho' },
-        { Id: '8', Game: 'Soul' }
-    ];
+    let members = props.members;
 
     useEffect(() => {
-        // Only initialize the TimePicker if it hasn't been initialized yet
+        // Preprocess members to combine Id and Name
+        const processedMembers = members.map((member) => ({
+            ...member,
+            displayMember: `${member.id} - ${member.name}`, // Combine Id and Name
+        }));
+        // Only initialize the AutoComplete if it hasn't been initialized yet
         if (!autoCompleteRef.current) {
             autoCompleteRef.current = new ej.dropdowns.AutoComplete({
                 //set the data to dataSource property
-                dataSource: sportsData,
+                dataSource: processedMembers,
                 // By default, its enabled. For your better understanding, showcase this property.
                 allowCustom: true,
                 // maps the appropriate column to fields property
-                fields: { value: 'Game' },
+                fields: { value: 'displayMember' },
                 // set placeholder to AutoComplete input element
                 placeholder: props.placeholder,
             });
             autoCompleteRef.current.appendTo('#' + props.attachToId);
         }
 
-        // Cleanup the TimePicker instance when the component unmounts
+        // Cleanup the AutoComplete instance when the component unmounts
         return () => {
             if (autoCompleteRef.current) {
                 autoCompleteRef.current.destroy();

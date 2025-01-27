@@ -4,12 +4,15 @@ import {setSideMenu} from "../../Slice/timesheetSetup.js";
 import {useDispatch} from "react-redux";
 import HourRange from "./HourRange.jsx";
 import Autocomplete from "./Autocomplete.jsx";
+import { usePage } from '@inertiajs/react';
 function SideMenu()
 {
+    const { members, auth } = usePage().props;
     // We are going to be dispatching here because we want the data to be used
     const dispatch = useDispatch();
 
     const handleSubmit = (event) => {
+
         // preventDefault is to prevent the submit button from reloading the entire page
         event.preventDefault();
         // We get the form data when the submit has been clicked
@@ -25,7 +28,7 @@ function SideMenu()
     return <form onSubmit={handleSubmit}>
         <div className="mb-3">
             <label htmlFor="input1" className="form-label">Team Member</label>
-            <Autocomplete attachToId="dropdownAuto" placeholder="Choose Employee" />
+            <Autocomplete members={members} attachToId="dropdownAuto" placeholder="Choose Employee" />
         </div>
 
         <div className="mb-3">
